@@ -1,0 +1,32 @@
+[package]
+name = "geopaint-editor"
+version = "0.0.1"
+authors = ["Glen De Cauwsemaecker <glen@plabayo.tech>"]
+edition = "2021"
+license = "GNU GPLv3"
+
+[dependencies]
+wee_alloc = "^0.4"
+yew = "^0.19"
+yew-router = "^0.16"
+
+[lib]
+name = "geopaint_editor_lib"
+path = "src/lib/lib.rs"
+
+[[bin]]
+name = "geopaint_editor_app"
+path = "src/bin/main.rs"
+
+[profile.release]
+# less code to include into binary
+panic = 'abort'
+# optimization over all codebase ( better optimization, slower build )
+codegen-units = 1
+# optimization for size ( more aggressive )
+opt-level = 'z'
+# optimization for size
+# opt-level = 's'
+# link time optimization using using whole-program analysis
+lto = true
+
