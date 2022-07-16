@@ -8,7 +8,8 @@ pub fn not_found() -> Html {
         Page::NotFound,
         html! {
             <div>
-                <h1>{ "404 — Not Found" }</h1>
+                <h1>{ "404" }</h1>
+                <h2>{ "Not Found" }</h2>
             </div>
         },
     )
