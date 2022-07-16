@@ -18,6 +18,10 @@ the canvas is a WebGL canvas.
 
 Reference for WebGL 2.0: <https://registry.khronos.org/webgl/specs/latest/2.0/> (supported in all Major browsers)
 
+As it's been a while that I've written shader myself using DirectX and OpenGL (ES), it might be good
+to start also by first playing a bit with the content of <https://webgl2fundamentals.org>
+and re-learning it a bit from scratch as to ensure the content is fresh in the head.
+
 The editor should remain as simple as possible, which not only makes it easier to use and learn,
 but also enhances creativity by limiting the freedom.
 
