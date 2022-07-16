@@ -1,6 +1,6 @@
 use gloo_render::{request_animation_frame, AnimationFrame};
 use wasm_bindgen::JsCast;
-use web_sys::{HtmlCanvasElement, WebGlRenderingContext as GL};
+use web_sys::{HtmlCanvasElement, WebGl2RenderingContext as GL};
 use yew::html::Scope;
 use yew::{html, Component, Context, Html, NodeRef};
 
@@ -53,7 +53,7 @@ impl Component for Canvas {
         let canvas = self.node_ref.cast::<HtmlCanvasElement>().unwrap();
 
         let gl: GL = canvas
-            .get_context("webgl")
+            .get_context("webgl2")
             .unwrap()
             .unwrap()
             .dyn_into()
