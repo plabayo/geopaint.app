@@ -46,6 +46,8 @@ fn page(page: Page, content: Html) -> Html {
                     <p>
                         { "Website made with ♥ by " }
                         <a href="https://plabayo.tech/" rel="nofollow">{ "Plabayo" }</a>
+                        { ". Source code available at " }
+                        <a href="https://github.com/plabayo/geopaint.app" rel="nofollow">{ "GitHub" }</a>
                         { "." }
                     </p>
                 </div>
