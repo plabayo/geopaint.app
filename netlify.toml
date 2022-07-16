@@ -1,0 +1,3 @@
+[build]
+publish = "./geopaint-editor/dist"
+command = "trunk build --release"
