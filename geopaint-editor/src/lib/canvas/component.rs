@@ -1,11 +1,13 @@
 use gloo_render::{request_animation_frame, AnimationFrame};
 use wasm_bindgen::JsCast;
-use web_sys::{HtmlCanvasElement, WebGl2RenderingContext as GL};
+use web_sys::{HtmlCanvasElement, MouseEvent, WebGl2RenderingContext as GL};
 use yew::html::Scope;
 use yew::{html, Component, Context, Html, NodeRef};
 
 pub enum Msg {
     Render(f64),
+    MouseMove(i32, i32),
+    MouseClick(i32, i32),
 }
 
 pub struct Canvas {
@@ -14,14 +16,25 @@ pub struct Canvas {
     _render_loop: Option<AnimationFrame>,
 }
 
+impl Canvas {
+    fn on_mouse_move(&mut self, x: i32, y: i32) {
+        log::info!("mouse move: ({}, {})", x, y);
+    }
+
+    fn on_mouse_click(&mut self, x: i32, y: i32) {
+        log::info!("mouse click: ({}, {})", x, y);
+    }
+}
+
 impl Component for Canvas {
     type Message = Msg;
     type Properties = ();
 
     fn create(_ctx: &Context<Self>) -> Self {
+        let node_ref = NodeRef::default();
         Self {
             gl: None,
-            node_ref: NodeRef::default(),
+            node_ref,
             _render_loop: None,
         }
     }
@@ -36,12 +49,30 @@ impl Component for Canvas {
                 self.render_gl(timestamp, ctx.link());
                 false
             }
+            Msg::MouseMove(x, y) => {
+                self.on_mouse_move(x, y);
+                false
+            }
+            Msg::MouseClick(x, y) => {
+                self.on_mouse_click(x, y);
+                false
+            }
         }
     }
 
-    fn view(&self, _ctx: &Context<Self>) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        let onmousemove = ctx.link().batch_callback(|event: MouseEvent| {
+            Some(Msg::MouseMove(event.offset_x(), event.offset_y()))
+        });
+        let onclick = ctx.link().batch_callback(|event: MouseEvent| {
+            Some(Msg::MouseClick(event.offset_x(), event.offset_y()))
+        });
         html! {
-            <canvas ref={self.node_ref.clone()} />
+            <canvas
+                ref={self.node_ref.clone()}
+                {onclick}
+                {onmousemove}
+            />
         }
     }
 
