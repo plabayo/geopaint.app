@@ -1,5 +1,8 @@
 use yew::prelude::*;
 
+mod home;
+pub use home::Home;
+
 mod editor;
 pub use editor::Editor;
 
@@ -11,6 +14,7 @@ pub use not_found::NotFound;
 
 #[derive(PartialEq)]
 enum Page {
+    Home,
     Editor,
     Print,
     NotFound,
@@ -24,6 +28,11 @@ fn page(page: Page, content: Html) -> Html {
                 <nav id="site-nav-main">
                     <div class="nav-buttons">
                         <a class="nav-button" href="/">
+                            <div class={ if page == Page::Home { "button-selected" } else { "" } }>
+                                <span>{ "Home" }</span>
+                            </div>
+                        </a>
+                        <a class="nav-button" href="/editor">
                             <div class={ if page == Page::Editor { "button-selected" } else { "" } }>
                                 <span>{ "Editor" }</span>
                             </div>

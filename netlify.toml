@@ -2,3 +2,15 @@
 base = "./geopaint-editor"
 publish = "./dist"
 command = "./build-site.sh"
+
+[[redirects]]
+from = "https://geopaint.netlify.app/*"
+to = "https://geopaint.app/:splat"
+status = 301
+force = false
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = false
