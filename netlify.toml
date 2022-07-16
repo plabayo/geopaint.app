@@ -1,3 +1,4 @@
 [build]
-publish = "./geopaint-editor/dist"
-command = "trunk build --release"
+base = "./geopaint-editor"
+publish = "./dist"
+command = "./build-site.sh"
