@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
 use super::{page, Page};
+use crate::canvas::Canvas;
 
 #[function_component(Editor)]
 pub fn editor() -> Html {
@@ -10,6 +11,9 @@ pub fn editor() -> Html {
             <div>
                 <h1>{ "Editor" }</h1>
                 <p>{ "todo..." }</p>
+                <div>
+                    <Canvas />
+                </div>
             </div>
         },
     )
