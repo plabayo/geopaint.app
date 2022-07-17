@@ -16,16 +16,6 @@ pub struct Canvas {
     _render_loop: Option<AnimationFrame>,
 }
 
-impl Canvas {
-    fn on_mouse_move(&mut self, x: i32, y: i32) {
-        log::info!("mouse move: ({}, {})", x, y);
-    }
-
-    fn on_mouse_click(&mut self, x: i32, y: i32) {
-        log::info!("mouse click: ({}, {})", x, y);
-    }
-}
-
 impl Component for Canvas {
     type Message = Msg;
     type Properties = ();
@@ -112,6 +102,14 @@ impl Component for Canvas {
 }
 
 impl Canvas {
+    fn on_mouse_move(&mut self, x: i32, y: i32) {
+        log::info!("mouse move: ({}, {})", x, y);
+    }
+
+    fn on_mouse_click(&mut self, x: i32, y: i32) {
+        log::info!("mouse click: ({}, {})", x, y);
+    }
+
     fn render_gl(&mut self, timestamp: f64, link: &Scope<Self>) {
         let gl = self.gl.as_ref().expect("GL Context not initialized!");
 
