@@ -27,6 +27,8 @@ features = [
   'WebGlShader',
   'WebGlUniformLocation',
   'MouseEvent',
+  'Navigator',
+  'Window',
 ]
 
 [lib]
